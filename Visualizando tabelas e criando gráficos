@@ -1,0 +1,26 @@
+# Visualizando valores totais e criando gráficos
+
+import pandas as pd
+import matplotlib.pyplot as grafico
+
+lista = pd.read_excel('Operations Analyst test database.xlsx')
+
+damage = lista[['Product','Piece Qty']].groupby('Product').sum()
+display(damage)
+
+Damage_total = lista[['Product','Piece','Piece Qty']].groupby(['Product','Piece']).sum()
+display (Damage_total)
+
+y = lista['Piece Qty']
+x = lista['Product']
+
+grafico.ylabel('y')
+grafico.xlabel('x')
+
+
+grafico.plot(x,y, color ='red')
+grafico.show()
+
+grafico.figure(figsize=(7,7))
+grafico.pie(damage,autopct='%1.1f%%')
+grafico.show()
